@@ -8,3 +8,13 @@
 
 // median([1, 2, 3, 4, 5]) // 3
 // median([3, 6, 10, 15, 20, 99]) // 12.5
+
+function median(array) {
+  if (array.length % 2 === 0) {
+    return (array[array.length / 2] + array[array.length / 2 - 1]) / 2;
+  } else {
+    return array[Math.floor(array.length / 2)];
+  }
+}
+console.log(median([1, 2, 3, 4, 5]));
+console.log(median([3, 6, 10, 15, 20, 99]));
