@@ -13,55 +13,67 @@
 // імейлом не існує, потрібно вивести в консоль повідомлення: `There is no user with email "${email}"` і повернути масив
 // без змін.
 
-// const users = [
-//     {
-//         first_name: 'Peterus',
-//         last_name: 'Verlander',
-//         email: 'pverlander0@bloomberg.com',
-//         gender: 'male',
-//     },
-//     {
-//         first_name: 'Charis',
-//         last_name: 'Tennant',
-//         email: 'ctennant1@t-online.de',
-//         gender: 'female',
-//     },
-//     {
-//         first_name: 'Hortense',
-//         last_name: 'Lammerding',
-//         email: 'hlammerding2@blog.com',
-//         gender: 'female',
-//     },
-//     {
-//         first_name: 'Anatollo',
-//         last_name: 'Ricards',
-//         email: 'aricards3@washington.edu',
-//         gender: 'male',
-//     },
-// ];
+const users = [
+  {
+    first_name: 'Peterus',
+    last_name: 'Verlander',
+    email: 'pverlander0@bloomberg.com',
+    gender: 'male',
+  },
+  {
+    first_name: 'Charis',
+    last_name: 'Tennant',
+    email: 'ctennant1@t-online.de',
+    gender: 'female',
+  },
+  {
+    first_name: 'Hortense',
+    last_name: 'Lammerding',
+    email: 'hlammerding2@blog.com',
+    gender: 'female',
+  },
+  {
+    first_name: 'Anatollo',
+    last_name: 'Ricards',
+    email: 'aricards3@washington.edu',
+    gender: 'male',
+  },
+];
 
 // 1)
-//  const femaleEmails = getEmailsByGender(users, 'female');
-//  console.log(femaleEmails); // ['ctennant1@t-online.de', 'hlammerding2@blog.com']
+const femaleEmails = getEmailsByGender(users, 'female');
+
+function getEmailsByGender(users, gender) {
+  let arr = [];
+  users.map((el) => (el.gender === gender ? arr.push(el.email) : false));
+  return arr;
+}
+
+console.log(femaleEmails); // ['ctennant1@t-online.de', 'hlammerding2@blog.com']
+
 // 2)
-//  const newUser = {
-//    first_name: 'Oralie',
-//    last_name: 'Langshaw',
-//    email: 'olangshaw4@google.pl',
-//    gender: 'female',
-//  };
-//  const updatedUsers = addNewUser(users, newUser);
-//  console.log(updatedUsers); // 5 users
+
+function addNewUser(users, newUser) {
+    users.find(el => el.includes(newUser));
+}
+const newUser = {
+    first_name: 'Oralie',
+    last_name: 'Langshaw',
+    email: 'olangshaw4@google.pl',
+    gender: 'female',
+};
+const updatedUsers = addNewUser(users, newUser);
+console.log(updatedUsers); // 5 users
 
 // // //
-//  const newUser2 = {
-//    first_name: 'Oralie',
-//    last_name: 'Langshaw',
-//    email: 'ctennant1@t-online.de',
-//    gender: 'female',
-//  };
-//  const updatedUsers2 = addNewUser(users, newUser2);
-//  console.log(updatedUsers2); // User with email "ctennant1@t-online.de" already exists
+const newUser2 = {
+    first_name: 'Oralie',
+    last_name: 'Langshaw',
+    email: 'ctennant1@t-online.de',
+    gender: 'female',
+};
+// const updatedUsers2 = addNewUser(users, newUser2);
+// console.log(updatedUsers2); // User with email "ctennant1@t-online.de" already exists
 
 // 3)
 // const updatedUsers = deleteUser(users, 'pverlander0@bloomberg.com');
