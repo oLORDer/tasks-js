@@ -41,41 +41,56 @@ const users = [
 ];
 
 // 1)
-const femaleEmails = getEmailsByGender(users, 'female');
-
 function getEmailsByGender(users, gender) {
   let arr = [];
   users.map((el) => (el.gender === gender ? arr.push(el.email) : false));
   return arr;
 }
-
-console.log(femaleEmails); // ['ctennant1@t-online.de', 'hlammerding2@blog.com']
+const femaleEmails = getEmailsByGender(users, 'female');
+// console.log(femaleEmails); // ['ctennant1@t-online.de', 'hlammerding2@blog.com']
 
 // 2)
 
-function addNewUser(users, newUser) {
-    users.find(el => el.includes(newUser));
-}
-const newUser = {
-    first_name: 'Oralie',
-    last_name: 'Langshaw',
-    email: 'olangshaw4@google.pl',
-    gender: 'female',
-};
-const updatedUsers = addNewUser(users, newUser);
-console.log(updatedUsers); // 5 users
+// function addNewUser(users, newUser) {
+//   let res = users.find((el) => {
+//     return el.email == newUser.email;
+//   });
 
-// // //
-const newUser2 = {
-    first_name: 'Oralie',
-    last_name: 'Langshaw',
-    email: 'ctennant1@t-online.de',
-    gender: 'female',
-};
+//   if (res === undefined) {
+//     return (newArr = [...users, newUser]);
+//   } else {
+//     return `User with email "${newUser.email}" already exists`;
+//   }
+// }
+
+// const newUser = {
+//   first_name: 'Oralie',
+//   last_name: 'Langshaw',
+//   email: 'olangshaw4@google.pl',
+//   gender: 'female',
+// };
+// const updatedUsers = addNewUser(users, newUser);
+// // console.log(updatedUsers); // 5 users
+
+// // // //
+// const newUser2 = {
+//   first_name: 'Oralie',
+//   last_name: 'Langshaw',
+//   email: 'ctennant1@t-online.de',
+//   gender: 'female',
+// };
 // const updatedUsers2 = addNewUser(users, newUser2);
 // console.log(updatedUsers2); // User with email "ctennant1@t-online.de" already exists
 
 // 3)
+// function deleteUser(users, userEmail) {
+//   let ind = users.findIndex(el => el.email === userEmail);
+//   if(ind === -1) {
+//     return `There is no user with email "${userEmail}"`;
+//   }
+//   users.splice(ind, 1);
+//   return users;
+// }
 // const updatedUsers = deleteUser(users, 'pverlander0@bloomberg.com');
 // console.log(updatedUsers); // 3 users
 
@@ -83,8 +98,21 @@ const newUser2 = {
 // console.log(updatedUsers2); // There is no user with email "pverlander0@bloomberg.com"
 
 // 4)
-// const updatedUsers = editUser(users, 'aricards3@washington.edu', 'Anatoliy')
-// console.log(updatedUsers); // last user has name Anatoliy
-
-// const updatedUsers2 = editUser(users, 'fakeEmail', 'Marlene')
-// console.log(updatedUsers2); // There is no user with email "fakeEmail"
+function editUser(users, userEmail, newName) {
+  let isFind = false;
+  users.map(el => {
+    if (el.email === userEmail) {
+      el.first_name = newName;
+      isFind = true;
+    }
+  })
+  if (!isFind) {
+    return `There is no user with email "${userEmail}"`;
+  }
+  
+  return users;
+}
+const updatedUsers = editUser(users, 'aricards3@washington.edu', 'Anatoliy')
+console.log(updatedUsers); // last user has name Anatoliy
+const updatedUsers2 = editUser(users, 'fakeEmail', 'Marlene')
+console.log(updatedUsers2); // There is no user with email "fakeEmail"
