@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>task</title>
+    <link rel="stylesheet" href="./css/33.css" />
   </head>
   <body>
-    <ol class="list">
-      <li>Html</li>
-      <li>Css</li>
-      <li>JS</li>
-      <li class="react">React</li>
-      <li>Node</li>
-    </ol>
-    <!-- <script src="./js/28.js"></script> -->
-    <script src="./js/examples.js"></script>
+    <section class="todoSec">
+      <form>
+        <label> <input id="todoInput" type="text" placeholder="ToDo" /></label
+        ><input id="checkbox" type="checkbox" /><button
+          id="btn"
+          disabled
+          type="submit"
+        >
+          Add ToDo
+        </button>
+      </form>
+      <ul class="list"></ul>
+    </section>
+
+    <script src="./js/33.js"></script>
+    <!-- <script src="./js/examples.js"></script> -->
   </body>
 </html>
