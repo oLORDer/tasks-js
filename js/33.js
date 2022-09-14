@@ -1,4 +1,4 @@
-// TODO list 
+// TODO list
 
 // Існує форма з одним інпутом, куди вводиться текст. І є чекбокс.
 //    Поки чекбокс не натиснутий, кнопка на формі неактивна.
@@ -9,26 +9,47 @@
 //    Чекбокс при додаванні нотатки знову має стати не вибраним, а кнопка знову недоступною
 //    Додати кнопку Видалити на кожну нотатку (+функціонал видалення)
 
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 // const input = document.querySelector('#todoInput');
-const checkbox = document.querySelector('#checkbox');
-const btn = document.querySelector('#btn');
-const list = document.querySelector('.list');
+const checkbox = document.querySelector("#checkbox");
+const btn = document.querySelector("#btn");
+const list = document.querySelector(".list");
 
-checkbox.addEventListener('change', () => {checkbox.checked ? (btn.disabled = false) : (btn.disabled = true)})
-form.addEventListener('submit', handleSubmit);
+checkbox.addEventListener("change", () => {
+  if (checkbox.checked) {
+    btn.disabled = false;
+    btn.textContent = "Add ToDo";
+  } else {
+    btn.disabled = true;
+    btn.textContent = "disabled";
+  }
+});
+form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formelEments = e.currentTarget.elements;
-    const input = formelEments['todoInput'];
-    // const checkbox = formelEments['checkbox'];
-    // const btn = formelEments['btn'];
-    list.insertAdjacentHTML("afterbegin", `<li>${input.value}</li>`)
+  const formelEments = e.currentTarget.elements;
+  const input = formelEments["todoInput"];
+  // const checkbox = formelEments['checkbox'];
+  // const btn = formelEments['btn'];
 
-    input.value = '';
-    checkbox.checked = false;
-    btn.disabled = true;
-    console.log();
+  if(!input.value){return}
+  list.insertAdjacentHTML(
+    "afterbegin",
+    `<li><p class="todoValue">${input.value}</p><button class="btnDelete">Delete</button></li>`
+  );
+
+  input.value = "";
+  checkbox.checked = false;
+  btn.disabled = true;
+}
+
+list.addEventListener("click", isCompleted);
+function isCompleted(e) {
+  if (e.target.nodeName !== "P") {
+    return;
+  }
+
+  console.log(e.target.classList.toggle("complited"));
 }

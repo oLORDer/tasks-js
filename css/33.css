@@ -1,14 +1,15 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: rgb(187, 183, 183);
+  background-color: #01243f;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
 .todoSec {
@@ -17,30 +18,76 @@ li{
   align-items: center;
   flex-direction: column;
   margin: auto;
+  margin-top: 50px;
   width: 1000px;
-  background-color: red;
 }
 
 form {
-}
-
-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding-top: 10px;
 }
 
 #todoInput {
-    padding: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
 }
 
 #checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+  outline: 1px solid red;
 }
 
 #btn {
+  padding: 5px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 80px;
 }
 
+#btn[disabled] {
+  background-color: rgb(188, 47, 132);
+  cursor: none;
+}
 
 .list {
-    width: 80%;
-    background-color: #fff;
-    border: 1px solid blue;
-    margin-top: 10px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+}
+
+.complited {
+  text-decoration: line-through;
+  background-color: rgb(120, 116, 116);
+  color: rgb(171, 165, 165);
+}
+
+.todoValue {
+  border: 2px solid rgb(100, 15, 102);
+  padding: 5px 10px;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.btnDelete {
+  padding: 5px;
+  background-color: rgb(198 46 116);
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
 }
